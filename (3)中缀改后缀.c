@@ -1,4 +1,10 @@
 %{
+/*********************************************
+YACC file
+基础程序
+Date:2023/9/19
+forked SherryXiye
+**********************************************/
 #include<stdio.h>
 #include<stdlib.h>
 #include<string.h>
@@ -26,16 +32,24 @@ lines : lines expr '\n'{printf("%s\n",$2);}
 
 expr : expr ADD expr {$$=(char*)malloc(100*sizeof(char));
                       strcpy($$,$1);
-                      strcat($$,$3);strcat($$,"+"); }
+                      strcat($$,$3);
+                      strcat($$,"+");
+                      strcat($$," "); }
      | expr SUB expr {$$=(char*)malloc(100*sizeof(char)); 
                       strcpy($$,$1);
-                      strcat($$,$3);strcat($$,"-"); }
+                      strcat($$,$3);
+                      strcat($$,"-");
+                      strcat($$," "); }
      | expr MUL expr {$$=(char*)malloc(100*sizeof(char)); 
                       strcpy($$,$1);
-                      strcat($$,$3);strcat($$,"*"); }
+                      strcat($$,$3);
+                      strcat($$,"*");
+                      strcat($$," "); }
      | expr DIV expr {$$=(char*)malloc(100*sizeof(char)); 
                       strcpy($$,$1);
-                      strcat($$,$3);strcat($$,"/"); }
+                      strcat($$,$3);
+                      strcat($$,"/");
+                      strcat($$," "); }
      | LKO expr RKO {$$=(char*)malloc(100*sizeof(char));
                       strcpy($$,$2);}
      | NUMBER   {$$ = (char*)malloc(100*sizeof(char)); 
