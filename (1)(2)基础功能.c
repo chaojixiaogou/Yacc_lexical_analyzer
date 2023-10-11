@@ -26,7 +26,7 @@ void yyerror(const char* s);
 
 %%
 
-lines :  lines expr ';' {printf("%g\n",$2);}
+lines :  lines expr ';' {printf("%f\n",$2);}
       |  lines ';'
       |
       ;
@@ -48,7 +48,7 @@ int yylex()
 {
     int c = getchar();
     while (c == ' ' || c == '\t' || c == '\n') {
-        c = getchar(); // 跳过空白字符
+        c = getchar(); 
     }
     if(c >= '0' && c <= '9'){
         yylval = c - '0';
